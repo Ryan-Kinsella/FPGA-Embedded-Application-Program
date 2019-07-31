@@ -72,7 +72,34 @@ int main(){
   while(1){
     
   }
-  
+  if (timer_flag == 1){
+    timer_flag = 0;
+    led_time += 0.1;
+    read_time += 0.1;
+    if (led_time == 0.5){
+      updateLEDs();
+      led_time = 0;
+    }
+    if (read_time == 4){
+      unsigned int input_char = *INPORT; //add to defines
+      //get low and high bits to seperate digits
+      unsigned int char_lo = input_char & 0x0F;
+      unsigned int char_lo = (input_char & 0x0F) >> 4;
+      //convert to hex
+      if (char_lo <= 9)
+        char_lo = char_lo + 0x30;
+      else
+        char_lo = char_lo + 0x41;
+      if (char_hi <= 9)
+        char_hi = char_hi + 0x30;
+      else
+        char_hi = char_hi + 0x41;
+      //call PrintChar
+      PrintChar(char_hi);
+      PrintChar(char_lo);
+      PrintChar('\n');
+    }
+  }
 }
       
       
