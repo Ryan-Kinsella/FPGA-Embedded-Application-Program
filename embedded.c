@@ -1,4 +1,3 @@
-// INCOMPLETE
 // All memory locations are given in the question and are assumed to be defined in the header file,
 // which is shown in the readme. C-style pointers are used to access the data members of these memory locations.
 
